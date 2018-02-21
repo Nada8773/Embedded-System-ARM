@@ -1,0 +1,2 @@
+ake the LED flash if either switch SW1 or SW2 are pressed (this means either PF4 or PF0 is 0). 
+This means toggle if just SW1 is pressed, just SW2 is pressed or both switches are pressed.
