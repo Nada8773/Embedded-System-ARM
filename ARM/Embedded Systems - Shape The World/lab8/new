@@ -1,0 +1,9 @@
+In this lab you will build a switch interface that implements positive logic, and you will build an LED interface that implements positive 
+logic.  You will interface them to your TM4C123. Overal
+1) the pin to which we connect the switch is moved to PE0, 
+2) you will have to remove the PUR initialization because pull up is no longer needed. 
+3) the pin to which we connect the LED is moved to PE1,
+4) the switch is changed from negative to positive logic
+5) you should decrease the delay so it flashes about 5 Hz. 
+To flash at 5 Hz means the LED comes on 5 times per second. If the switch is pressed we turn on the LED for 100 ms,
+turn off the LED for 100 ms, and repeat.
