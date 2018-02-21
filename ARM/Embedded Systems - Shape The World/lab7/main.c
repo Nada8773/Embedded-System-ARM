@@ -1,5 +1,4 @@
-// 0.Documentation Section 
-// Lab7_HeartBlock, main.c
+
 
 // Runs on LM4F120 or TM4C123 LaunchPad
 // Input from PF4(SW1) is AS (atrial sensor), 
@@ -18,41 +17,6 @@
 // 8) clear VT low 
 // 9) set Ready high
 
-// Date: January 15, 2016
-
-// 1. Pre-processor Directives Section
-#include "TExaS.h"
-
-// Constant declarations to access port registers using 
-// symbolic names instead of addresses
-#define GPIO_PORTF_DATA_R       (*((volatile unsigned long *)0x400253FC))
-#define GPIO_PORTF_DIR_R        (*((volatile unsigned long *)0x40025400))
-#define GPIO_PORTF_AFSEL_R      (*((volatile unsigned long *)0x40025420))
-#define GPIO_PORTF_PUR_R        (*((volatile unsigned long *)0x40025510))
-#define GPIO_PORTF_DEN_R        (*((volatile unsigned long *)0x4002551C))
-#define GPIO_PORTF_LOCK_R       (*((volatile unsigned long *)0x40025520))
-#define GPIO_PORTF_CR_R         (*((volatile unsigned long *)0x40025524))
-#define GPIO_PORTF_AMSEL_R      (*((volatile unsigned long *)0x40025528))
-#define GPIO_PORTF_PCTL_R       (*((volatile unsigned long *)0x4002552C))
-#define SYSCTL_RCGC2_R          (*((volatile unsigned long *)0x400FE108))
-// 2. Declarations Section
-//   Global Variables
-
-//   Function Prototypes
-void PortF_Init(void);
-void Delay1ms(unsigned long msec);
-void EnableInterrupts(void);  // Enable interrupts
-void WaitForASLow(void);
-void WaitForASHigh(void);
-void SetVT(void);
-void ClearVT(void);
-void SetReady(void);
-void ClearReady(void);
- unsigned long in;
- unsigned long out;
- unsigned long out2;
-// 3. Subroutines Section
-// MAIN: Mandatory for a C Program to be executable
 int main(void){
   TExaS_Init(SW_PIN_PF40, LED_PIN_PF31,ScopeOn);  // activate grader and set system clock to 80 MHz
   PortF_Init();                            // Init port PF4 PF3 PF1    
