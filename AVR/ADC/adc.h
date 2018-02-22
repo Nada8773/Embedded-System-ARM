@@ -1,9 +1,4 @@
-/*
- * adc.h
- *
- *  Created on: ??þ/??þ/????
- *      Author: ZAS
- */
+
 
 #ifndef ADC_H_
 #define ADC_H_
