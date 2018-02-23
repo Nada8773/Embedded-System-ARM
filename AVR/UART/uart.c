@@ -10,7 +10,6 @@ void UART_init()
 
 }
 
-
 void UART_sendByte(uint8 data)
 {
 	while (Bit_is_clear(UCSRA,UDRE))
@@ -28,4 +27,23 @@ uint8 UART_recieveByte()
 
 	}
 	return UDR ;
+}
+
+void UART_sendString(uint8 *str)
+{
+	while (*str !='\0')
+	{
+		UART_sendByte(*str);
+		str++;
+	}
+}
+void UART_recieveString(uint8 *str)
+{
+		*str= UART_recieveByte();
+		while (*str !='#')
+		{
+str++;
+			*str= UART_recieveByte();
+		}
+		*str='\0';
 }
