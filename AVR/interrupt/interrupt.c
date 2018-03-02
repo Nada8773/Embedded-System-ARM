@@ -12,7 +12,7 @@ void interrupt (void)
 ISR (INT0_vect)
 {
 
-	   	PORTC ^= (1<<PC0); // LED1 ON / off
+	   	PORTC ^= (1<<PC0); 
 }
 
 int main (void)
