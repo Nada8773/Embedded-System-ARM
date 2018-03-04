@@ -1,3 +1,6 @@
+/*
+increment the global variable count each time the SW1 switch is pressed using falling edge-triggered interrupts on Port F.
+*/
 #define NVIC_EN0              (*((volatile unsigned long *)0xE000E100))  // IRQ 0 to 31 Set Enable Register
 #define NVIC_PRI7             (*((volatile unsigned long *)0xE000E41C))  // IRQ 28 to 31 Priority Register
 #define GPIO_PORTF_DIR        (*((volatile unsigned long *)0x40025400))
