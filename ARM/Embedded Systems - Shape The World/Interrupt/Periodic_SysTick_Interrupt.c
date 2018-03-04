@@ -1,3 +1,6 @@
+/*
+toggle LED at PF2 every 1 ms 
+*/
 #define NVIC_EN0              (*((volatile unsigned long *)0xE000E100))  // IRQ 0 to 31 Set Enable Register
 #define NVIC_PRI3             (*((volatile unsigned long *)0xE000ED20))  // IRQ 28 to 31 Priority Register
 #define GPIO_PORTF_DATA       (*((volatile unsigned long *)0x400253FC))
@@ -22,12 +25,9 @@
 	
 
 
-
 void wait_interrupt(void);
 void Disable_interrupt(void);
 void Enable_interrupt(void);
-
-       
 
 
 //out at PF4 
