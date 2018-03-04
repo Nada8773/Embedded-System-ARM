@@ -1,1 +1,0 @@
-increment the global variable count each time the SW1 switch is pressed using falling edge-triggered interrupts on Port F.
