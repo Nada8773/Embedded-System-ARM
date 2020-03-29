@@ -11,8 +11,22 @@
 #define NVIC_H
 
 
-#define E_OK   0
-#define E_NOK  1
+
+
+#define EXTI0_IRQNUMBER    6U
+#define EXTI1_IRQNUMBER    7U
+#define EXTI2_IRQNUMBER    8U
+#define EXTI3_IRQNUMBER    9U
+#define EXTI4_IRQNUMBER    10U
+#define USART1_IRQNUMBER   37U
+#define USART2_IRQNUMBER   38U
+#define USART3_IRQNUMBER   39U
+#define UART4_IRQNUMBER    52U
+#define UART5_IRQNUMBER    53U
+
+
+
+
 
 /******************************************************************
  * Function To Enable Interrupt .

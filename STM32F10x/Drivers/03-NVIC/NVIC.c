@@ -6,7 +6,7 @@
 **  AUTHOR       : Nada Mohamed                                               **
 *******************************************************************************/
 
-#include "STD_TYPE.h"
+#include "STD_TYPES.h"
 #include "NVIC.h"
 
 #define MAX_IRQNUMBER      80
@@ -66,12 +66,11 @@ Std_ReturnType NVIC_EnableIRQ(u8 IRQNumber)
 	Std_ReturnType State =E_OK;
 	if(IRQNumber<=MAX_IRQNUMBER )
 	{
-	  NVIC_t->ISER[IRQNumber/NUMBER_OF_BITS] = (1<<(IRQNumber % NUMBER_OF_BITS));
-
+	      NVIC_t->ISER[IRQNumber/NUMBER_OF_BITS] = (1<<(IRQNumber % NUMBER_OF_BITS));
 	}
 	else
 	{
-	  State =E_NOK;
+	  State =E_NOT_OK;
 	}
 	return State;
 }
@@ -92,7 +91,7 @@ Std_ReturnType NVIC_DisableIRQ (u8 IRQNumber)
 	}
 	else
 	{
-	  State =E_NOK;
+	  State =E_NOT_OK;
 	}
 	return State;
 }
@@ -113,7 +112,7 @@ Std_ReturnType NVIC_SetPendingIRQ(u8 IRQNumber)
 	}
 	else
 	{
-	  State =E_NOK;
+	  State =E_NOT_OK;
 	}
 	return State;
 }
@@ -136,7 +135,7 @@ Std_ReturnType NVIC_ClearPendingIRQ(u8 IRQNumber)
 	}
 	else
 	{
-	  State =E_NOK;
+	  State =E_NOT_OK;
 	}
 	return State;
 }
@@ -154,7 +153,7 @@ Std_ReturnType NVIC_ISActive(u8 IRQNumber)
 	if(!((NVIC_t->IABR[IRQNumber/NUMBER_OF_BITS]>>(IRQNumber % NUMBER_OF_BITS)) ==1))
 	//if(!(NVIC_t->IABR[IRQNumber/NumberOfBits] & (1<<(IRQNumber % NumberOfBits))))
 	{
-		  State =E_NOK;
+		  State =E_NOT_OK;
 	}
 	return State;
 }
@@ -193,7 +192,7 @@ Std_ReturnType NVIC_SoftwareInterrupt(u8 IRQNumber)
 	}
 	else
 	{
-		State =E_NOK;
+		State =E_NOT_OK;
 	}
   return State;
 }
