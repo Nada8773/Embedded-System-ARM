@@ -1,8 +1,8 @@
 
 /********************************************************************************
 **  FILENAME     : SCHEDULER.H         			                              **
-**  VERSION      : 1.1                                                        **
-**  DATE         : 16 Mar 2020                                                **                                                                         **
+**  VERSION      : 1.2                                                       **
+**  DATE         : 19 Mar 2020                                                **                                                                         **
 **  PLATFORM     : STM		                                                  **
 **  AUTHOR       : Nada Mohamed                                               **
 *******************************************************************************/
@@ -35,7 +35,7 @@ typedef struct
 void SCHEDULE_Init(void);
 
 /****************************************************************************************************
- * Function callback to handle call back function
+ * Function create scheduler task
  * return Type :- return
  *                        E_OK     :- if the input argument is correct .
  *                                    (if the input pointer  is valid)

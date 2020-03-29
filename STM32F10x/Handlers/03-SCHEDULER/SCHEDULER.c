@@ -1,21 +1,33 @@
 /********************************************************************************
 **  FILENAME     : SCHEDULER.c        			                              **
-**  VERSION      : 1.1                                                        **
-**  DATE         : 16 Mar 2020                                                **                                                                         **
+**  VERSION      : 1.2                                                        **
+**  DATE         : 19 Mar 2020                                                **                                                                         **
 **  PLATFORM     : STM		                                                  **
 **  AUTHOR       : Nada Mohamed                                               **
 *******************************************************************************/
 #include "STD_TYPES.h"
-#include "SYSTICK.h"
 #include "SCHEDULER.h"
+#include "SYSTICK.h"
 #include "SCHEDULER_CFG.h"
 
-/************************* Private Function *************/
+/* Private Function */
 static void Schedule(void);
 
-/**** array of struct *********/
-static Task_t* SysTasks[NUMBER_OF_TASKS];
+/*
+ * container contain
+ *     Task_t*  AppTask                    ->  pointer struct Task_t
+ *     (u32)    RemainTickToExecute        ->  remain tick to execute
+ *
+ */
+typedef struct
+{
+	Task_t* AppTask             ;
+	u32     RemainTickToExecute ;
+}SysTask_t;
 
+
+/* Array of struct */
+static SysTask_t SysTasks[NUMBER_OF_TASKS];
 
 /******************************************************************
  * Function To initialize scheduler
@@ -34,7 +46,7 @@ void SCHEDULE_Init(void)
 }
 
 /****************************************************************************************************
- * Function callback to handle call back function
+ * private Function create scheduler task
  * return Type :- return
  *                        E_OK     :- if the input argument is correct .
  *                                    (if the input pointer  is valid)
@@ -45,14 +57,14 @@ void SCHEDULE_Init(void)
  ****************************************************************************************************/
 Std_ReturnType SCHEDULE_CreateTask(Task_t* Copy_AppTask)
 {
-	   Std_ReturnType Local_u8Status=E_OK ;
+	    Std_ReturnType Local_u8Status=E_OK;
 		if(Copy_AppTask ==NULL)
 		{
 			Local_u8Status=E_NOT_OK;
 		}
 		else
 		{
-			SysTasks[Copy_AppTask->Priority]=Copy_AppTask;
+			SysTasks[Copy_AppTask->Priority].AppTask = Copy_AppTask;
 		}
 	  return Local_u8Status;
 }
@@ -64,15 +76,15 @@ Std_ReturnType SCHEDULE_CreateTask(Task_t* Copy_AppTask)
  *****************************************************************/
 static void Schedule(void)
 {
-	static u32 Local_u32counter;
 	u32 Local_u32TaskNumber;
+
 	for(Local_u32TaskNumber=0 ; Local_u32TaskNumber < NUMBER_OF_TASKS ; Local_u32TaskNumber++)
 	{
-		if(Local_u32counter % (SysTasks[Local_u32TaskNumber]->Periodic_TimeMS/SYSTICK_TICKMS) ==0)
+		if(SysTasks[Local_u32TaskNumber].RemainTickToExecute == 0)
 		{
-			SysTasks[Local_u32TaskNumber]->TaskRunnable();
+			SysTasks[Local_u32TaskNumber].AppTask->TaskRunnable();
+			SysTasks[Local_u32TaskNumber].RemainTickToExecute = (SysTasks[Local_u32TaskNumber].AppTask->Periodic_TimeMS)/SYSTICK_TICKMS;
 		}
-		Local_u32counter++;
-
+		SysTasks[Local_u32TaskNumber].RemainTickToExecute--;
 	}
 }
