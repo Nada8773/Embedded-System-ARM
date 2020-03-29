@@ -1,21 +1,33 @@
 
 /********************************************************************************
-**  FILENAME     : SCHEDULER_CFG.H     			                              **
+**  FILENAME     : SCHEDULER_CFG.C     			                              **
 **  VERSION      : 1.5                                                        **
 **  DATE         : 19 Mar 2020                                                **                                                                         **
 **  PLATFORM     : STM		                                                  **
 **  AUTHOR       : Nada Mohamed                                               **
 *******************************************************************************/
+#include "STD_TYPES.h"
+#include "SCHEDULER.h"
+#include "SYSTICK.h"
+#include "SCHEDULER_CFG.h"
+
+Task_t t2;
+Task_t t1;
+static SysTaskInfo_t SysTaskInfo[]=
+	{
+			{
+			   &t2,
+				1
+			},
+		{
+				&t1,
+				0
+		}
+
+	};
 
 
-#ifndef SCHEDULER_CFG_H_
-#define SCHEDULER_CFG_H_
-
-/* number of tasks to run */
-#define NUMBER_OF_TASKS     2
-
-/* number of ticks in ms */
-#define SYSTICK_TICKMS      1000U
-
-
-#endif
+SysTaskInfo_t* SysTaskInfoFunc()
+{
+	return SysTaskInfo;
+}
