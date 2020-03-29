@@ -23,7 +23,7 @@ volatile RCC_Peripheral*   const RCC       = (RCC_Peripheral*)BASE_Address_RCC_P
 /****************************** MASKS *******************/
 
 #define RCC_CFGR_SW_Mask          (u32)0xFFFFFFFC
-#define RCC_CFGR_SWS_Mask         (u32)0xFFFFFFF3
+#define RCC_CFGR_SWS_Mask         (u32)0x0000000C
 #define RCC_CFGR_PLL_Mask         (u32)0xFFFFFC0F
 #define RCC_CFGR_HPRE_Mask        (u32)0xffffff0f
 #define RCC_CFGR_PPRE1_Mask       (u32)0xfffff8ff
@@ -274,10 +274,13 @@ extern void RCC_SelectMCO(u32 Clock)
 extern void RCC_EnablePeripheral_APB2(u32 Peripheral)
 {
 
-
 	RCC->APB2ENR |=Peripheral ;
-
 }
 
+extern void RCC_EnablePeripheral_APB1(u32 Peripheral)
+{
+
+	RCC->APB1ENR |=Peripheral ;
+}
 
 

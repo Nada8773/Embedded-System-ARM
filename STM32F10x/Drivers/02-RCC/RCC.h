@@ -1,8 +1,7 @@
 
-#include "STD_TYPE.h"
+#include "STD_TYPES.h"
 
-
-typedef u32                    ClockSource_ReturnType;
+typedef u32       ClockSource_ReturnType;
 
 #define ClockSourceType  (u32)
 
@@ -119,9 +118,16 @@ typedef u32                    ClockSource_ReturnType;
 #define RCC_APB2ENR_TIM9EN      	  (u32)0x80000
 #define RCC_APB2ENR_TIM10EN     	  (u32)0x100000
 #define RCC_APB2ENR_TIM11EN    		  (u32)0x200000
-#define RCC_APB2ENR_USARTEN     	  (u32)0x4000
+#define RCC_APB2ENR_USART1EN     	  (u32)0x4000
 #define RCC_APB2ENR_ADC3EN      	  (u32)0x8000
 #define RCC_APB2ENR_ADC3EN     		  (u32)0x8000
+
+/*********************** APB1ENR ****************/
+#define RCC_APB1ENR_USART2EN          (u32)0x20000
+#define RCC_APB1ENR_USART3EN          (u32)0x40000
+#define RCC_APB1ENR_UART4EN           (u32)0x80000
+#define RCC_APB1ENR_UART5EN           (u32)0x100000
+
 
 
 /********************* State ****************/
@@ -129,10 +135,10 @@ typedef u32                    ClockSource_ReturnType;
 #define OFF 0
 
 
-#define Status u32
+/*#define Status u32
 #define Ok     (Status)1
 #define Nok    (Status)0
-
+*/
 /************** functions Prototype ************************************************************/
 /*  Select System Clock :
  *   RCC_CFGR_SW_HSI
@@ -270,12 +276,17 @@ extern void RCC_SelectMCO(u32 Clock);
  RCC_APB2ENR_TIM9EN      	   TIM9EN: TIM9 Timer clock enable
  RCC_APB2ENR_TIM10EN     	   TIM10EN: TIM10 timer clock enable
  RCC_APB2ENR_TIM11EN    	   TIM11EN: TIM11 Timer clock enable
- RCC_APB2ENR_USARTEN     	   USART1EN: USART1 clock enable
+ RCC_APB2ENR_USART1EN     	   USART1EN: USART1 clock enable
  RCC_APB2ENR_ADC3EN      	   ADC3EN: ADC3 interface clock enable
 
  */
 extern void RCC_EnablePeripheral_APB2(u32 Peripheral);
 
-
-
+/*
+ RCC_APB1ENR_USART2EN  ->  USART2 clock enabled
+ RCC_APB1ENR_USART3EN  ->  USART3 clock enabled
+ RCC_APB1ENR_UART4EN   ->  UART4 clock enabled
+ RCC_APB1ENR_UART5EN   ->  UART5 clock enabled
+ */
+extern void RCC_EnablePeripheral_APB1(u32 Peripheral);
 
