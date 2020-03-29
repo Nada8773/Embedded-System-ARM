@@ -1,6 +1,0 @@
-Write Embedded c code using ATmega16 µC to use
-SPI Driver.
- Requirements:
-• Configure the µC control with internal 1Mhz Clock.
-• µC2 will receive a string “I am Micro1” using SPI driver from µC1
-and display it on LCD.

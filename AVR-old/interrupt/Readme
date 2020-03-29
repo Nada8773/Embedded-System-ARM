@@ -1,9 +1,0 @@
-Write Embedded C code using ATmega16 µC to
-control led by external interrupt INT0.
- Requirements:
-• Configure the µC control with internal 1Mhz Clock.
-• The led is connected to pin 0 in PORTC.
-• Connect the Led using Negative Logic configuration.
-• Connect a push button with Pull Down configurations at INT0
-pin (PD2).
-• When the INT0 is triggered just toggle the led.
