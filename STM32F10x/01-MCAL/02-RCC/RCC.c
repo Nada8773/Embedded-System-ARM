@@ -283,4 +283,8 @@ extern void RCC_EnablePeripheral_APB1(u32 Peripheral)
 	RCC->APB1ENR |=Peripheral ;
 }
 
+extern void RCC_EnablePeripheral_AHB(u32 Peripheral)
+{
+	RCC->AHBENR |=Peripheral ;
+}
 

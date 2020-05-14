@@ -129,6 +129,9 @@ typedef u32       ClockSource_ReturnType;
 #define RCC_APB1ENR_UART5EN           (u32)0x100000
 
 
+/********************** AHBENR ******************/
+#define RCC_AHBENR_DMA1EN            (u32)0x01
+#define RCC_AHBENR_DMA2EN            (u32)0x02
 
 /********************* State ****************/
 #define ON  1
@@ -289,4 +292,11 @@ extern void RCC_EnablePeripheral_APB2(u32 Peripheral);
  RCC_APB1ENR_UART5EN   ->  UART5 clock enabled
  */
 extern void RCC_EnablePeripheral_APB1(u32 Peripheral);
+
+/*
+ RCC_AHBENR_DMA1EN  ->  DMA1 clock enable
+ RCC_AHBENR_DMA2EN  ->  DMA2 clock enable
+ */
+extern void RCC_EnablePeripheral_AHB(u32 Peripheral);
+
 

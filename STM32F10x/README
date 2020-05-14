@@ -1,0 +1,11 @@
+- Platform -> STM32F10X
+- implement 
+  - HAL Drivers:
+         The Hardware Abstraction Layer (HAL) ,contains drivers for external
+         devices.
+  - MCAL Drivers:
+        The Microcontroller Abstraction Layer (MCAL) ,offers drivers for
+        access input / output of microcontroller.
+  - OS:
+        embedded operating system to manage tasks.
+ 
